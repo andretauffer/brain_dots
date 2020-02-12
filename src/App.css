@@ -1,10 +1,13 @@
-.App {
-  text-align: center;
+:root {
+  --background-blue: rgb(2, 7, 37);
+  --light-green: #8cffa3;
+  --move-time: 10s;
+  --mouse-x: 0;
+  --mouse-y: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App {
+  text-align: center;
 }
 
 @media (prefers-reduced-motion: no-preference) {
