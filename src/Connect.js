@@ -5,13 +5,15 @@ const StyledLine = styled.line``;
 
 export default dots => {
   const [lines, setLines] = useState([]);
-  const [restart, setRestart] = useState(false);
-  let index = 0;
 
   const randomizer = () => {
     const randomPoint = Math.floor(Math.random() * dots.dots.length);
-    index = randomPoint;
     return dots.dots[randomPoint];
+  };
+
+  const randomStart = (previous = 0) => {
+    const randomStart = Math.floor(Math.random() * 5);
+    return previous + randomStart;
   };
 
   const pickClosePoint = point => {
@@ -19,7 +21,6 @@ export default dots => {
     const secondPoint = dots.dots.find(dot =>
       disableLine({ x1: cx, x2: dot.cx, y1: cy, y2: dot.cy })
     );
-    // console.log("got something?", secondPoint);
     return secondPoint;
   };
 
@@ -46,26 +47,15 @@ export default dots => {
         secondMoveX: secondPoint.moveX,
         secondMoveY: secondPoint.moveY,
         initialTime: initialPoint.duration,
-        secondTime: secondPoint.duration
+        secondTime: secondPoint.duration,
+        begin: `${randomStart()}s`
       };
       newLines.push(line);
     }
     setLines([...lines, ...newLines]);
-    setRestart(false);
   };
 
-  useEffect(() => addLines(100), []);
-  useEffect(() => {
-    if (document.querySelector("#line-1")) {
-      document
-        .querySelector("#animation-1")
-        .addEventListener("repeatEvent", () => setRestart(true));
-    }
-  }, [lines]);
-
-  useEffect(() => {
-    restart && addLines(10);
-  }, [restart]);
+  useEffect(() => addLines(300), []);
 
   return lines.map((li, i) => (
     <StyledLine
@@ -113,6 +103,7 @@ export default dots => {
         dur="5s"
         repeatCount="indefinite"
         additive="sum"
+        begin={li.begin}
       />
       <animate
         id={`animation-${i}`}
@@ -121,6 +112,7 @@ export default dots => {
         dur="5s"
         repeatCount="indefinite"
         additive="sum"
+        begin={li.begin}
       />
     </StyledLine>
   ));
