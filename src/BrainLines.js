@@ -8,6 +8,7 @@ const StyledPath = styled.path`
   stroke-width: 1px;
   z-index: 20;
   position: relative;
+  transform: scale(0.8);
 `;
 
 export default ({ className }) => (

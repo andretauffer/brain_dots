@@ -55,7 +55,7 @@ export default dots => {
     setLines([...lines, ...newLines]);
   };
 
-  useEffect(() => addLines(300), []);
+  useEffect(() => addLines(100), []);
 
   return lines.map((li, i) => (
     <StyledLine

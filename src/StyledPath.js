@@ -4,6 +4,7 @@ import styled from "styled-components";
 const StyledPath = styled.path`
   stroke: #8cffa3;
   stroke-width: 1px;
+  transform: scale(0.8);
 `;
 
 export default ({ children }) => (

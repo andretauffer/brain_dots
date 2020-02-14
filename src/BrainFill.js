@@ -5,6 +5,7 @@ const StyledPath = styled.path`
   stroke: #8cffa3;
   stroke-width: 1px;
   fill: rgba(47, 92, 56, 0.05);
+  transform: scale(0.8);
 `;
 
 export default ({ className }) => (

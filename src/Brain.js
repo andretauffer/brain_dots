@@ -49,16 +49,14 @@ export default () => {
   const [dots, setDots] = useState([]);
   const ref = useRef(null);
 
-  const initialPoints = (width, height) => {
-    const countX = width / 50;
-    const countY = height / 50;
+  const initialPoints = (quantity) => {
     const dotsArray = [];
-    for (let i = 0; i < countX * countY * 2; i++) {
-      const modifierX = Math.floor(i / 12) * 100;
-      const modifierY = i % 12 === 0 ? (i / 12) * 50 : (i % 12) * 200;
+    for (let i = 0; i < quantity; i++) {
+      const modifierX = Math.floor(i / 12) * 250;
+      const modifierY = i % 6 === 0 ? Math.floor(i / 6) * 100 : (i % 6) * 200;
       dotsArray.push({
-        cx: 400 + modifierX + Math.floor(Math.random() * 200) - 400,
-        cy: modifierY + Math.floor(Math.random() * 200) - 400,
+        cx: 450 + modifierX + Math.floor(Math.random() * 200) - 400,
+        cy: modifierY + Math.floor(Math.random() * 50) - 100,
         moveX: Math.floor(Math.random() * 500) - 250,
         moveY: Math.floor(Math.random() * 500) - 250,
         duration: Math.floor(Math.random() * 30) + 10 + "s"
@@ -83,7 +81,8 @@ export default () => {
       .getBoundingClientRect();
     const width = container.width;
     const height = container.height;
-    initialPoints(width, height);
+    const quantity = (container.width/70)*(container.height/70);
+    initialPoints(quantity);
   }, []);
 
   return (
@@ -109,7 +108,6 @@ export default () => {
         <BrainLines />
         <StyledPath />
         <BrainFill className="brainFill" />
-        {/* <rect width="1600" height="1400" clipPath="url(#cut-off)" /> */}
         {/* <svg clipPath="url(#cut-off)">
           <SpecialDot
             ref={ref}
@@ -121,13 +119,13 @@ export default () => {
           ></SpecialDot>
         </svg> */}
         <svg
-          // viewBox="0 200 1458 1334"
+          // viewBox="300 500 1458 1334"
           xmlns="http://www.w3.org/2000/svg"
           clipPath="url(#cut-off)"
         >
           {dots &&
             dots.map((dot, i) => (
-              <svg clipPath="url(#cut-off)" height="100" width="100">
+              <svg clipPath="url(#cut-off)" height="1458" width="1334">
                 <StyledDot
                   id={`dot-${i}`}
                   cx={dot.cx}
