@@ -79,8 +79,6 @@ export default () => {
     const container = document
       .querySelector(".svg-container")
       .getBoundingClientRect();
-    const width = container.width;
-    const height = container.height;
     const quantity = (container.width/70)*(container.height/70);
     initialPoints(quantity);
   }, []);
@@ -123,9 +121,10 @@ export default () => {
           xmlns="http://www.w3.org/2000/svg"
           clipPath="url(#cut-off)"
         >
+          <svg clipPath="url(#cut-off)" height="1458" width="1334">
+            <g>
           {dots &&
             dots.map((dot, i) => (
-              <svg clipPath="url(#cut-off)" height="1458" width="1334">
                 <StyledDot
                   id={`dot-${i}`}
                   cx={dot.cx}
@@ -139,18 +138,19 @@ export default () => {
                     dur={dot.duration}
                     repeatCount="indefinite"
                     additive="sum"
-                  />
+                    />
                   <animate
                     attributeName="cy"
                     values={`0;${dot.moveY};0`}
                     dur={dot.duration}
                     repeatCount="indefinite"
                     additive="sum"
-                  />
+                    />
                 </StyledDot>
-              </svg>
             ))}
-          {dots.length > 0 && <Connect dots={dots} />}
+                    </g>
+            </svg>
+          {/* {dots.length > 0 && <Connect dots={dots} />} */}
         </svg>
       </SvgStyled>
     </div>
