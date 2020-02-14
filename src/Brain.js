@@ -101,28 +101,9 @@ export default () => {
           <clipPath id="cut-off">
             <BrainFill />
           </clipPath>
-        </defs>
-
-        <BrainLines />
-        <StyledPath />
-        <BrainFill className="brainFill" />
-        {/* <svg clipPath="url(#cut-off)">
-          <SpecialDot
-            ref={ref}
-            id={`special-dot`}
-            cx="10"
-            cy="10"
-            filter="url(#blurMe)"
-            r="300"
-          ></SpecialDot>
-        </svg> */}
-        <svg
-          // viewBox="300 500 1458 1334"
-          xmlns="http://www.w3.org/2000/svg"
-          clipPath="url(#cut-off)"
-        >
-          <svg clipPath="url(#cut-off)" height="1458" width="1334">
-            <g>
+              <pattern id="dots" viewBox="0 0 1458 1334" width="100%" height="100%">
+              </pattern>
+              <pattern id="Pattern" x="0" y="0" width="1" height="1">
           {dots &&
             dots.map((dot, i) => (
                 <StyledDot
@@ -148,9 +129,30 @@ export default () => {
                     />
                 </StyledDot>
             ))}
-                    </g>
-            </svg>
-          {/* {dots.length > 0 && <Connect dots={dots} />} */}
+            {dots.length > 0 && <Connect dots={dots} />}
+              
+    </pattern>
+        </defs>
+
+        <BrainLines />
+        <StyledPath />
+        <BrainFill className="brainFill" fill="url(#stars)" />
+        <rect width="1400" height="1200" clipPath="url(#cut-off)" fill="url(#Pattern)"  />
+        {/* <svg clipPath="url(#cut-off)">
+          <SpecialDot
+            ref={ref}
+            id={`special-dot`}
+            cx="10"
+            cy="10"
+            filter="url(#blurMe)"
+            r="300"
+          ></SpecialDot>
+        </svg> */}
+        <svg
+          // viewBox="300 500 1458 1334"
+          xmlns="http://www.w3.org/2000/svg"
+          clipPath="url(#cut-off)"
+        >
         </svg>
       </SvgStyled>
     </div>
