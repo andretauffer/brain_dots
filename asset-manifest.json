@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/brain_dots/static/css/main.e11d61cd.chunk.css",
-    "main.js": "/brain_dots/static/js/main.0f8df9d9.chunk.js",
-    "main.js.map": "/brain_dots/static/js/main.0f8df9d9.chunk.js.map",
+    "main.js": "/brain_dots/static/js/main.0d88e306.chunk.js",
+    "main.js.map": "/brain_dots/static/js/main.0d88e306.chunk.js.map",
     "runtime-main.js": "/brain_dots/static/js/runtime-main.181156da.js",
     "runtime-main.js.map": "/brain_dots/static/js/runtime-main.181156da.js.map",
     "static/js/2.fdee5e75.chunk.js": "/brain_dots/static/js/2.fdee5e75.chunk.js",
     "static/js/2.fdee5e75.chunk.js.map": "/brain_dots/static/js/2.fdee5e75.chunk.js.map",
     "index.html": "/brain_dots/index.html",
-    "precache-manifest.599d9502cdef6e698b855ed480779336.js": "/brain_dots/precache-manifest.599d9502cdef6e698b855ed480779336.js",
+    "precache-manifest.8ea1dd270a425eb2bbf50bd1a4b915ab.js": "/brain_dots/precache-manifest.8ea1dd270a425eb2bbf50bd1a4b915ab.js",
     "service-worker.js": "/brain_dots/service-worker.js",
     "static/css/main.e11d61cd.chunk.css.map": "/brain_dots/static/css/main.e11d61cd.chunk.css.map",
     "static/js/2.fdee5e75.chunk.js.LICENSE.txt": "/brain_dots/static/js/2.fdee5e75.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.181156da.js",
     "static/js/2.fdee5e75.chunk.js",
     "static/css/main.e11d61cd.chunk.css",
-    "static/js/main.0f8df9d9.chunk.js"
+    "static/js/main.0d88e306.chunk.js"
   ]
 }
