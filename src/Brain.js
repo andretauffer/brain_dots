@@ -6,18 +6,26 @@ import Connect from "./Connect";
 import BrainLines from "./BrainLines";
 
 const SvgStyled = styled.svg`
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
   width: 600px;
   height: 400px;
-  ${BrainFill}:hover circle & {
-    fill: red;
-    /* animation: move-to-cursor 4s ease forwards;
-    @keyframes move-to-cursor {
-      100%{
-        transform: ;
-      }
-    } */
+  @media only screen and (max-width: 700px) {
+    scale: 0.5;
+    transform: translate(-45%, -50%) scale(0.8);
   }
 `;
+// ${BrainFill}:hover circle & {
+//   fill: red;
+//   /* animation: move-to-cursor 4s ease forwards;
+//   @keyframes move-to-cursor {
+//     100%{
+//       transform: ;
+//     }
+//   } */
+// }
 // [50, 50]
 
 const StyledDot = styled.circle`

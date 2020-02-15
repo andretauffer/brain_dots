@@ -4,7 +4,7 @@ import styled from "styled-components";
 const StyledPolyline = styled.polyline`
   stroke-dasharray: 500;
   stroke-dashoffset: 500;
-  animation: fill-in 7s linear alternate infinite;
+  animation: fill-in 5s linear alternate infinite;
 
   @keyframes fill-in {
     50% {
