@@ -96,6 +96,7 @@ export default dots => {
 
   return lines.map((li, i) => (
     <StyledPolyline
+      key={`poly-${i}`}
       fill="transparent"
       stroke="transparent"
       strokeWidth="2"

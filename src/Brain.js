@@ -113,6 +113,7 @@ export default () => {
             {dots &&
               dots.map((dot, i) => (
                 <StyledDot
+                  key={`dot-${i}`}
                   id={`dot-${i}`}
                   cx={dot.cx}
                   cy={dot.cy}
