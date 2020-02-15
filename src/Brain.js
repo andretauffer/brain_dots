@@ -49,7 +49,7 @@ export default () => {
   const [dots, setDots] = useState([]);
   const ref = useRef(null);
 
-  const initialPoints = (quantity) => {
+  const initialPoints = quantity => {
     const dotsArray = [];
     for (let i = 0; i < quantity; i++) {
       const modifierX = Math.floor(i / 12) * 250;
@@ -59,9 +59,10 @@ export default () => {
         cy: modifierY + Math.floor(Math.random() * 50) - 100,
         moveX: Math.floor(Math.random() * 500) - 250,
         moveY: Math.floor(Math.random() * 500) - 250,
-        duration: Math.floor(Math.random() * 30) + 10 + "s"
+        duration: "30s"
       });
     }
+    // duration: Math.floor(Math.random() * 30) + 10 + "s"
     setDots(dotsArray);
   };
 
@@ -79,7 +80,7 @@ export default () => {
     const container = document
       .querySelector(".svg-container")
       .getBoundingClientRect();
-    const quantity = (container.width/70)*(container.height/70);
+    const quantity = (container.width / 70) * (container.height / 70);
     initialPoints(quantity);
   }, []);
 
@@ -98,14 +99,19 @@ export default () => {
               <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
+          <filter id="blurLess">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+            <feMerge>
+              <feMergeNode />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
           <clipPath id="cut-off">
             <BrainFill />
           </clipPath>
-              <pattern id="dots" viewBox="0 0 1458 1334" width="100%" height="100%">
-              </pattern>
-              <pattern id="Pattern" x="0" y="0" width="1" height="1">
-          {dots &&
-            dots.map((dot, i) => (
+          <pattern id="Pattern" x="0" y="0" width="1" height="1">
+            {dots &&
+              dots.map((dot, i) => (
                 <StyledDot
                   id={`dot-${i}`}
                   cx={dot.cx}
@@ -119,42 +125,43 @@ export default () => {
                     dur={dot.duration}
                     repeatCount="indefinite"
                     additive="sum"
-                    />
+                  />
                   <animate
                     attributeName="cy"
                     values={`0;${dot.moveY};0`}
                     dur={dot.duration}
                     repeatCount="indefinite"
                     additive="sum"
-                    />
+                  />
                 </StyledDot>
-            ))}
+              ))}
             {dots.length > 0 && <Connect dots={dots} />}
-              
-    </pattern>
+          </pattern>
         </defs>
 
         <BrainLines />
         <StyledPath />
         <BrainFill className="brainFill" fill="url(#stars)" />
-        <rect width="1400" height="1200" clipPath="url(#cut-off)" fill="url(#Pattern)"  />
-        {/* <svg clipPath="url(#cut-off)">
-          <SpecialDot
-            ref={ref}
-            id={`special-dot`}
-            cx="10"
-            cy="10"
-            filter="url(#blurMe)"
-            r="300"
-          ></SpecialDot>
-        </svg> */}
-        <svg
-          // viewBox="300 500 1458 1334"
-          xmlns="http://www.w3.org/2000/svg"
+        <rect
+          width="1400"
+          height="1200"
           clipPath="url(#cut-off)"
-        >
-        </svg>
+          fill="url(#Pattern)"
+        />
+        <svg xmlns="http://www.w3.org/2000/svg" clipPath="url(#cut-off)"></svg>
       </SvgStyled>
     </div>
   );
 };
+{
+  /* <svg clipPath="url(#cut-off)">
+  <SpecialDot
+    ref={ref}
+    id={`special-dot`}
+    cx="10"
+    cy="10"
+    filter="url(#blurMe)"
+    r="300"
+  ></SpecialDot>
+</svg> */
+}
